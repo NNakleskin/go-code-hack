@@ -12,8 +12,10 @@
 	<div class="container-fluid">
 
 		<div class="container text-center">
+			<div class="progress-bar"></div>
+			<p class="progress-points">2 / 20</p>
 			<div class="puzl-holder text-center mt-3">
-				<img id="img-holder" src="" width="600" height="400" border="0" alt="img-holder" />
+				<img id="img-holder" src="" width="400" height="600" border="0" alt="img-holder" />
 				<p class="timer-holder text-center m-2"><span class="timer-minute">00</span>:<span class="timer-second">00</span>:<span class="timer-ms">00</span></p>
 			</div>
 			<div class="row">
@@ -32,13 +34,47 @@
 	</div>
 </div>
 
-
+<div class="modal-overlay d-none">
+	<div class="modal-window">
+		<div class="modal-head">
+			<span id="close-modal">&times;</span>
+		</div>
+		<div class="modal-body">
+			<h6 class="modal-title">
+				Поздравляем! Вы справились с заданием!
+			</h6>
+			<p class="modal-desc">Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Soluta, nulla aspernatur magnam ratione quam vero, autem, consectetur architecto eligendi eum rerum aliquid. Dolores perferendis excepturi quod cum cupiditate reprehenderit nisi, quibusdam modi suscipit accusamus aliquid veritatis quo facere dolor recusandae doloribus adipisci dolorem, impedit, numquam culpa temporibus pariatur? 
+			<br>
+			<br>
+			Soluta debitis earum excepturi voluptas odit quis, possimus exercitationem maiores aliquam culpa omnis quae eos magnam in laboriosam eius vero dicta dolorem voluptatum voluptate dolores rem ea unde. Illum placeat atque amet asperiores ratione enim. Beatae excepturi porro voluptatem ullam minus, eaque! Laudantium explicabo amet eum quos dolores officia molestias accusamus ea maiores, incidunt vero ad illo vitae voluptate veniam cum?
+			<br>
+			<br>
+			Qui iste ducimus sunt totam fuga sint maxime labore ab doloremque delectus! Laudantium quia, sint hic qui aut ipsam est vitae nostrum a vel neque temporibus quisquam eos repellendus aliquid ipsa doloremque placeat autem beatae, natus provident iure. Nulla, quaerat ratione tenetur vel, architecto maxime itaque corrupti voluptatibus, quos, similique laborum rerum porro. Mollitia minima impedit, error facere, quam corrupti, accusamus dolorum doloremque ad laboriosam dolore quas sapiente voluptates explicabo harum? Rerum iure itaque quis velit et. Inventore at officia vitae mollitia amet in, maxime debitis ab optio, possimus, dicta exercitationem eos. Voluptatum quas nesciunt consectetur sapiente id eveniet eos molestias voluptas, veritatis voluptatibus ullam natus nemo dolores voluptate accusantium, necessitatibus, exercitationem quisquam vero, eius sunt doloribus quod esse a architecto? Sequi, voluptates? Explicabo fugiat fugit deleniti optio vel possimus cupiditate numquam ipsum dignissimos laudantium omnis suscipit excepturi quos mollitia praesentium, itaque at necessitatibus minus. 
+			<br>
+			<br>
+			Maiores maxime aspernatur quas ratione incidunt saepe nulla repellendus, modi perspiciatis praesentium optio libero nemo voluptate quibusdam laudantium assumenda omnis nam alias. Quia, cumque velit, magni laborum sint quo id delectus repellendus eaque sapiente ipsam deleniti perferendis nihil dolorum consectetur? Porro laboriosam, veritatis, fugiat pariatur nulla ratione dolorum beatae, dicta vitae illum, sequi! Temporibus, natus consequuntur accusantium exercitationem tempore quibusdam! Quo incidunt numquam quos voluptas nostrum distinctio, minus illum fugit odio reiciendis assumenda quae commodi praesentium hic iure accusamus quibusdam blanditiis et. Debitis maiores quae voluptas, aperiam repudiandae ducimus? Fugit ut vero illum exercitationem, consectetur iure culpa, debitis tempore possimus accusamus maiores repellendus. Quibusdam nemo quasi at, rerum soluta molestias laborum error, alias, nulla facere veritatis ducimus. Nesciunt ea blanditiis quis qui sequi, minima optio accusamus libero distinctio dicta veniam enim obcaecati quibusdam unde deserunt accusantium ipsam tempore labore saepe, autem voluptates eius dignissimos, maiores! Dolorum pariatur quos debitis officiis voluptas, officia. Recusandae aliquid est doloremque alias consequatur, soluta eaque labore quidem laudantium odit beatae accusantium temporibus minus, magnam obcaecati molestiae mollitia fugit, ullam repellat sapiente error aut quaerat similique? Perspiciatis, tempore. Sequi quasi reiciendis voluptates sapiente ex ipsam! Ipsum doloremque et fugiat, facere, maiores dolor repellat, repudiandae cupiditate veniam, architecto impedit minima esse! Consequuntur sed quae maiores consequatur, magni excepturi nemo molestias veniam repellendus commodi modi voluptatem laboriosam corporis porro ea aut fuga quam! Dolores sit blanditiis suscipit! Possimus quos ea repellendus quia velit numquam, quisquam odit commodi dolorum aliquid nihil voluptatum, ex sunt animi!</p>
+			<button class="mm-btn w-100" id="close-game">Закрыть игру</button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="assets/js/main.js"></script>
 <script type="text/javascript" src="pazl/snapfit.js"></script>
 <script>
 	const startBtn = document.querySelector("#start-game")
 	const shuffleBtn = document.querySelector("#shuffle-pazl")
 	const finishBtn = document.querySelector("#finish-pazl")
+	const modal = document.querySelector(".modal-overlay")
+	const closeModal = document.querySelector("#close-modal")
+	const closeGame = document.querySelector("#close-game")
 	let imgHolder = document.querySelector("#img-holder")
+
+	closeModal.addEventListener("click", function(){
+		modal.classList.add("d-none")
+	})
+
+	closeGame.addEventListener("click", function(){
+		window.location.href = "https://mtmuseum.com/vdnh"
+	})
 
 	let timer = 0
 	let timerInterval
@@ -68,8 +104,9 @@
 	}
 
     function successFinish(){
-    	alert("WORK")
     	stopTimer()
+    	setLocalStorageProgress()
+    	modal.classList.remove("d-none")
     }
 
     shuffleBtn.addEventListener("click", function(){
