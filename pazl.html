@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Пазлы</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+	<div class="container-fluid">
+
+		<div class="container text-center">
+			<div class="puzl-holder text-center mt-3">
+				<img id="img-holder" src="" width="600" height="400" border="0" alt="img-holder" />
+				<p class="timer-holder text-center m-2"><span class="timer-minute">00</span>:<span class="timer-second">00</span>:<span class="timer-ms">00</span></p>
+			</div>
+			<div class="row">
+				<div class="col-12 mt-2 mb-2">
+					<button id="start-game" class="mm-btn w-100">Начать игру</button>
+				</div>
+				<div class="col-md-6 col-sm-12 mt-2 mb-2">
+					<button type="button" id="shuffle-pazl" class="mm-btn-second w-100">Перемешать</button>
+				</div>
+				<div class="col-md-6 col-sm-12 mt-2 mb-2">
+					<button type="button" id="finish-pazl" class="mm-btn-second w-100">Сложить пазл</button><br>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<script type="text/javascript" src="pazl/snapfit.js"></script>
+<script>
+	const startBtn = document.querySelector("#start-game")
+	const shuffleBtn = document.querySelector("#shuffle-pazl")
+	const finishBtn = document.querySelector("#finish-pazl")
+	let imgHolder = document.querySelector("#img-holder")
+
+	let timer = 0
+	let timerInterval
+	let ms = document.querySelector('.timer-ms')
+	let second = document.querySelector('.timer-second')
+	let minute = document.querySelector('.timer-minute')
+
+	let pathToImage = window.location.href.split("?")[1].split("=")[1]
+
+	imgHolder.setAttribute("src", "assets/img/" + pathToImage)
+
+	function startTimer() {
+	  stopTimer();
+	  timerInterval = setInterval(function() {
+	  timer += 1/60;
+	  msVal = Math.floor((timer - Math.floor(timer))*100);
+	  secondVal = Math.floor(timer) - Math.floor(timer/60) * 60;
+	  minuteVal = Math.floor(timer/60);
+	  ms.innerHTML = msVal < 10 ? "0" + msVal.toString() : msVal;
+	  second.innerHTML = secondVal < 10 ? "0" + secondVal.toString() : secondVal;
+	  minute.innerHTML = minuteVal < 10 ? "0" + minuteVal.toString() : minuteVal;
+	  }, 1000/60);
+	}
+
+	function stopTimer() {
+	  clearInterval(timerInterval);
+	}
+
+    function successFinish(){
+    	alert("WORK")
+    	stopTimer()
+    }
+
+    shuffleBtn.addEventListener("click", function(){
+    	snapfit.admix(document.querySelector("#img-holder"))
+    })
+
+    finishBtn.addEventListener("click", function(){
+    	snapfit.solve(document.querySelector("#img-holder"))
+    })
+
+    startBtn.addEventListener("click", function(){
+    	let data = {
+    		callback: successFinish, 
+    		aborder:true, 
+    		aimage:true, 
+    		polygon:true, 
+    		space:20, 
+    		mixed: true, 
+    		level: 1,
+    		forcetui: true,
+    		simple: true
+    	}
+    	snapfit.add(imgHolder, data)
+    	startTimer()
+    })
+
+</script>
+</body>
+</html>
