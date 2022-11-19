@@ -53,7 +53,7 @@
 					<h6 class="modal-quiz-score"></h6>
 					<h6 class="modal-quiz-result"></h6>
 					
-					<p class="modal-desc">суета....</p>
+					<p class="modal-desc"></p>
 					<button class="mm-btn w-100" id="close-game">Закрыть игру</button>
 				</div>
 			</div>
@@ -221,6 +221,10 @@
 			];
 
 			let testId = getParams()
+
+			if(isNaN(testId)){
+				window.location.href = "https://nnakleskin.github.io/go-code-hack/quiz.html?vid=1"
+			}
 
 
 			let questions = 

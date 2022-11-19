@@ -1,6 +1,13 @@
  const RAD = Math.PI/180;
  const scrn = document.getElementById('canvas');
  const sctx = scrn.getContext("2d");
+
+
+
+ if(isNaN(getParams())){
+     window.location.href = "https://nnakleskin.github.io/go-code-hack/flappy/index.html?vid=5"
+ }
+ 
  scrn.tabIndex = 1;
  scrn.addEventListener("click",()=>{
     switch (state.curr) {
@@ -311,7 +318,7 @@
                     closeModal.addEventListener("click", function(){
                         modal.classList.add("d-none")
                     })
-                    if (this.score.curr >= 2){
+                    if (this.score.curr >= 10){
                         setProgressStorage(getParams()) 
                         modal.classList.remove("d-none")
                     }
