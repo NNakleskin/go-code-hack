@@ -270,6 +270,9 @@
     },
 
 
+
+
+
     drawScore : function() {
             sctx.fillStyle = "#FFFFFF";
             sctx.strokeStyle = "#000000";
@@ -300,6 +303,14 @@
                     let modal = document.querySelector(".modal-overlay")
                     let modalTitle = document.querySelector(".modal-title")
                     let modalDesc = document.querySelector(".modal-desc")
+                    const closeGame = document.querySelector("#close-game")
+                    const closeModal = document.querySelector("#close-modal")
+                    closeGame.addEventListener("click", function(){
+                        window.location.href = "https://mtmuseum.com/vdnh"
+                    })
+                    closeModal.addEventListener("click", function(){
+                        modal.classList.add("d-none")
+                    })
                     if (this.score.curr >= 2){
                         setProgressStorage(getParams()) 
                         modal.classList.remove("d-none")
