@@ -138,6 +138,7 @@ const results =
 	new Result("Вы в совершенстве знаете тему", 6)
 ];
 
+
 //Массив с вопросами
 const questions = 
 [

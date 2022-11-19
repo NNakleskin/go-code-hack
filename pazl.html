@@ -13,7 +13,7 @@
 
 		<div class="container text-center">
 			<div class="progress-bar"></div>
-			<p class="progress-points">2 / 20</p>
+			<p class="progress-points">0 / 12</p>
 			<div class="puzl-holder text-center mt-3">
 				<img id="img-holder" src="" width="400" height="600" border="0" alt="img-holder" />
 				<p class="timer-holder text-center m-2"><span class="timer-minute">00</span>:<span class="timer-second">00</span>:<span class="timer-ms">00</span></p>
@@ -43,16 +43,7 @@
 			<h6 class="modal-title">
 				Поздравляем! Вы справились с заданием!
 			</h6>
-			<p class="modal-desc">Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Soluta, nulla aspernatur magnam ratione quam vero, autem, consectetur architecto eligendi eum rerum aliquid. Dolores perferendis excepturi quod cum cupiditate reprehenderit nisi, quibusdam modi suscipit accusamus aliquid veritatis quo facere dolor recusandae doloribus adipisci dolorem, impedit, numquam culpa temporibus pariatur? 
-			<br>
-			<br>
-			Soluta debitis earum excepturi voluptas odit quis, possimus exercitationem maiores aliquam culpa omnis quae eos magnam in laboriosam eius vero dicta dolorem voluptatum voluptate dolores rem ea unde. Illum placeat atque amet asperiores ratione enim. Beatae excepturi porro voluptatem ullam minus, eaque! Laudantium explicabo amet eum quos dolores officia molestias accusamus ea maiores, incidunt vero ad illo vitae voluptate veniam cum?
-			<br>
-			<br>
-			Qui iste ducimus sunt totam fuga sint maxime labore ab doloremque delectus! Laudantium quia, sint hic qui aut ipsam est vitae nostrum a vel neque temporibus quisquam eos repellendus aliquid ipsa doloremque placeat autem beatae, natus provident iure. Nulla, quaerat ratione tenetur vel, architecto maxime itaque corrupti voluptatibus, quos, similique laborum rerum porro. Mollitia minima impedit, error facere, quam corrupti, accusamus dolorum doloremque ad laboriosam dolore quas sapiente voluptates explicabo harum? Rerum iure itaque quis velit et. Inventore at officia vitae mollitia amet in, maxime debitis ab optio, possimus, dicta exercitationem eos. Voluptatum quas nesciunt consectetur sapiente id eveniet eos molestias voluptas, veritatis voluptatibus ullam natus nemo dolores voluptate accusantium, necessitatibus, exercitationem quisquam vero, eius sunt doloribus quod esse a architecto? Sequi, voluptates? Explicabo fugiat fugit deleniti optio vel possimus cupiditate numquam ipsum dignissimos laudantium omnis suscipit excepturi quos mollitia praesentium, itaque at necessitatibus minus. 
-			<br>
-			<br>
-			Maiores maxime aspernatur quas ratione incidunt saepe nulla repellendus, modi perspiciatis praesentium optio libero nemo voluptate quibusdam laudantium assumenda omnis nam alias. Quia, cumque velit, magni laborum sint quo id delectus repellendus eaque sapiente ipsam deleniti perferendis nihil dolorum consectetur? Porro laboriosam, veritatis, fugiat pariatur nulla ratione dolorum beatae, dicta vitae illum, sequi! Temporibus, natus consequuntur accusantium exercitationem tempore quibusdam! Quo incidunt numquam quos voluptas nostrum distinctio, minus illum fugit odio reiciendis assumenda quae commodi praesentium hic iure accusamus quibusdam blanditiis et. Debitis maiores quae voluptas, aperiam repudiandae ducimus? Fugit ut vero illum exercitationem, consectetur iure culpa, debitis tempore possimus accusamus maiores repellendus. Quibusdam nemo quasi at, rerum soluta molestias laborum error, alias, nulla facere veritatis ducimus. Nesciunt ea blanditiis quis qui sequi, minima optio accusamus libero distinctio dicta veniam enim obcaecati quibusdam unde deserunt accusantium ipsam tempore labore saepe, autem voluptates eius dignissimos, maiores! Dolorum pariatur quos debitis officiis voluptas, officia. Recusandae aliquid est doloremque alias consequatur, soluta eaque labore quidem laudantium odit beatae accusantium temporibus minus, magnam obcaecati molestiae mollitia fugit, ullam repellat sapiente error aut quaerat similique? Perspiciatis, tempore. Sequi quasi reiciendis voluptates sapiente ex ipsam! Ipsum doloremque et fugiat, facere, maiores dolor repellat, repudiandae cupiditate veniam, architecto impedit minima esse! Consequuntur sed quae maiores consequatur, magni excepturi nemo molestias veniam repellendus commodi modi voluptatem laboriosam corporis porro ea aut fuga quam! Dolores sit blanditiis suscipit! Possimus quos ea repellendus quia velit numquam, quisquam odit commodi dolorum aliquid nihil voluptatum, ex sunt animi!</p>
+			<p class="modal-desc"></p>
 			<button class="mm-btn w-100" id="close-game">Закрыть игру</button>
 		</div>
 	</div>
@@ -66,6 +57,7 @@
 	const modal = document.querySelector(".modal-overlay")
 	const closeModal = document.querySelector("#close-modal")
 	const closeGame = document.querySelector("#close-game")
+	const modalDesc = document.querySelector(".modal-desc")
 	let imgHolder = document.querySelector("#img-holder")
 
 	closeModal.addEventListener("click", function(){
@@ -82,9 +74,57 @@
 	let second = document.querySelector('.timer-second')
 	let minute = document.querySelector('.timer-minute')
 
-	let pathToImage = window.location.href.split("?")[1].split("=")[1]
+	let testId = getParams()
 
-	imgHolder.setAttribute("src", "assets/img/" + pathToImage)
+
+	if (testId === 6){
+		imgHolder.setAttribute("src", "assets/img/pazzels/6.jpg")
+		imgHolder.setAttribute("width", "500")
+		imgHolder.setAttribute("height", "600")
+		modalDesc.innerHTML = `Работа Александра Повзнера <br><br>
+								Здесь и сейчас <br><br>
+								Интуитивно уловимые образы, понятные посылы и по-настоящему демократичные мотивы в скульптурах Александра Повзнера напоминают нам о ценности межчеловеческого общения и взаимодействия, что создает основу для гуманности в социальном пространстве, в том числе и в транспортной системе.`
+	}
+
+	else if (testId === 7){
+		imgHolder.setAttribute("src", "assets/img/pazzels/7.png")
+		imgHolder.setAttribute("width", "500")
+		imgHolder.setAttribute("height", "450")
+		modalDesc.innerHTML = `Работа Аристарха Чернышёва <br><br>
+							Loading, 2008 <br><br>
+							Инфоскульптура за авторством пионера медиа-арта в России Аристарха Чернышева показывает развитие транспортных интерфейсов в современности: сейчас не нужно пльзоваться десятками различных источников информации, чтобы узнать, что требуется — все находится в вашем телефоне, что и изменяет практики повседневности.`
+	}
+
+	else if (testId === 8){
+		imgHolder.setAttribute("src", "assets/img/pazzels/8.png")
+		imgHolder.setAttribute("width", "500")
+		imgHolder.setAttribute("height", "600")
+		modalDesc.innerHTML = `Работа Александра Шишкина-Хокусая <br><br>
+								Щепки <br><br>
+								Арт-объекты Шишкина-Хокусая напоминают нам о былых социальных практиках, которые ныне отмирают или перестают быть распространенными в современном обществе. На контрасте с ними мы можем оценить, как сильно изменились социальные нормы и материальные условия, в рамках которых данные нормы развивались: теперь, с внедрением бесплитоных автомобилей «голосование» на дорогах уходит в прошлое, но все еще остается считываемой социальной практикой в современности, что и обыгрывается в его работе.`
+	}
+
+	else if (testId === 9){
+		imgHolder.setAttribute("src", "assets/img/pazzels/9.png")
+		imgHolder.setAttribute("width", "500")
+		imgHolder.setAttribute("height", "600")
+		modalDesc.innerHTML = `Работа Ильи Кабакова <br><br>
+								Свободный автобус, 2012 <br><br>
+								В своей работе Илья Кабаков, один из основателей московского концептуализма, показывает зрителю развитие наземного транспорта в советском прошлом. В современной транспортной системе наземный общественный транспорт начинает играть все более и более значимую роль, в особенности по сравнению с его ролью в прошлом, представляя экологичную, удобную и быструю замену не только личным автомобилям, но и метро, что подчеркивает особую значимость развития наземной транспортной системы.`
+	}
+
+	else if (testId === 10){
+		imgHolder.setAttribute("src", "assets/img/pazzels/10.png")
+		imgHolder.setAttribute("width", "470")
+		imgHolder.setAttribute("height", "620")
+		modalDesc.innerHTML = `Работа Алексея Морозова <br><br>
+								CIRRUS 2, 2012 <br><br>
+								Данная скульптура за авторством известного скульптора Морозова, директора Московского академического художественного училища и члена-корреспондента Российской Академии Художеств, демонстрирует развитие шеринговой культуры — культуры делиться. Именно тренд на разделение услуг между многим количеством людей обеспечивает экологичное развитие городской среды в целом и транспортной системы в частности.`
+	}
+	else {
+		window.location.href = window.location.protocol + "//" + window.location.host + "/pazl.html?vid=6"
+	}
+
 
 	function startTimer() {
 	  stopTimer();
@@ -105,7 +145,7 @@
 
     function successFinish(){
     	stopTimer()
-    	setLocalStorageProgress()
+    	setProgressStorage(testId)
     	modal.classList.remove("d-none")
     }
 

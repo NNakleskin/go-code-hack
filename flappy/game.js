@@ -90,7 +90,7 @@
  const pipe = {
      top : {sprite : new Image()},
      bot : {sprite : new Image()},
-     gap:100,
+     gap:120,
      moved: true,
      pipes : [],
      draw : function(){
@@ -130,7 +130,7 @@
         ],
     rotatation : 0,
     x : 50,
-    y :100,
+    y : 100,
     speed : 0,
     gravity : .125,
     thrust : 3.6,
@@ -258,7 +258,7 @@
                 sctx.drawImage(this.tap[this.frame].sprite,this.tx,this.ty)
                 break;
             case state.gameOver :
-                this.y = parseFloat(scrn.height-this.gameOver.sprite.height)/2;
+                this.y = parseFloat(scrn.height-this.gameOver.sprite.height)/3;
                 this.x = parseFloat(scrn.width-this.gameOver.sprite.width)/2;
                 this.tx = parseFloat(scrn.width - this.tap[0].sprite.width)/2;
                 this.ty = this.y + this.gameOver.sprite.height- this.tap[0].sprite.height;
@@ -268,6 +268,8 @@
         }
         this.drawScore();
     },
+
+
     drawScore : function() {
             sctx.fillStyle = "#FFFFFF";
             sctx.strokeStyle = "#000000";
@@ -294,6 +296,13 @@
                     catch(e) {
                         sctx.fillText(sc,scrn.width/2-85,scrn.height/2+15);
                         sctx.strokeText(sc,scrn.width/2-85,scrn.height/2+15);
+                    }
+                    let modal = document.querySelector(".modal-overlay")
+                    let modalTitle = document.querySelector(".modal-title")
+                    let modalDesc = document.querySelector(".modal-desc")
+                    if (this.score.curr >= 2){
+                        setProgressStorage(getParams()) 
+                        modal.classList.remove("d-none")
                     }
                     
                 break;
